@@ -11,3 +11,7 @@ class TeamService:
     @staticmethod
     def get_all_teams():
         return Team.query.all()
+
+    @staticmethod
+    def get_detail_team(id):
+        return Team.query.get(id)
