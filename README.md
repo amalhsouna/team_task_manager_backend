@@ -1,6 +1,6 @@
 # Flask Project
 
-This is a simple Flask project to demonstrate how to set up a virtual environment and run a basic Flask application.
+This is a Flask API project designed to run a basic Flask application. The objective of this project is to create APIs for managing teams and their tasks, and then to consume this API with Angular 18.
 
 ## Installation
 

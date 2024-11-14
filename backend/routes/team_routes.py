@@ -16,3 +16,14 @@ def add_team():
     data = request.json
     new_team = TeamService.create_team(data['name'])
     return jsonify({'id': new_team.id, 'name': new_team.name}), 201
+
+@team_bp.route('/teams/<int:id>', methods=['GET'])
+def get_team_detail(id):
+    team = TeamService.get_detail_team(id) 
+    if team is None:
+        ConnectionAbortedError(404, description="Team not found")
+    return jsonify({
+        'id': team.id,
+        'name': team.name,
+        'task': [task.to_dict() for task in team.tasks] 
+    })
