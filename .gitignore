@@ -3,3 +3,8 @@
 /__pycache__/
 /backend/venv/
 /venv/
+
+# Ignore Python cache files
+__pycache__/
+*.py[cod]
+*.pyo

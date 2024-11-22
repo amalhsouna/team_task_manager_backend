@@ -22,6 +22,9 @@ class DevelopmentConfig(Config):
     )
 
     SQLALCHEMY_DATABASE_URI = url_object
+    APIFAIRY_TITLE = "Team Manager project"
+    APIFAIRY_UI = "swagger_ui"
+    APIFAIRY_VERSION = "1.0"
     
 class TestingConfig:
     TESTING = True

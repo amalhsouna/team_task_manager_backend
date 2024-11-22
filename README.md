@@ -1,6 +1,6 @@
 # Flask Project
 
-This is a Flask API project designed to run a basic Flask application. The objective of this project is to create APIs for managing teams and their tasks, and then to consume this API with Angular 18.
+This is a Flask API project designed to run a Flask application. The objective of this project is to create APIs for managing teams and their tasks, and then to consume this API with Angular 18.
 
 ## Installation
 
@@ -36,7 +36,7 @@ This is a Flask API project designed to run a basic Flask application. The objec
 
 5. Install dependencies:
     ```bash
-    pip install flask
+    pip install -r requirements.txt
     ```
 
 ## Running the Application
