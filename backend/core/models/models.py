@@ -8,7 +8,7 @@ from sqlalchemy import (
     Column,
 )
 
-db = SQLAlchemy()
+from core import database as db
 
 class Team(db.Model):
     __tablename__ = "team"

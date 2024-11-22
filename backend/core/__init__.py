@@ -5,6 +5,7 @@ from flask import Flask
 from flask_marshmallow import Marshmallow
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
+from apifairy import APIFairy
 
 
 load_dotenv()
@@ -14,6 +15,8 @@ database = SQLAlchemy()
 db_migration = Migrate()
 
 ma = Marshmallow()
+
+apifairy = APIFairy()
 
 def create_app(config_type=os.getenv("CONFIG_TYPE")):
     app = Flask(__name__)
@@ -33,7 +36,7 @@ def initialize_extensions(app):
 
     ma.init_app(app)
 
-    #apifairy.init_app(app)
+    apifairy.init_app(app)
 
     import core.models.models
 
