@@ -1,4 +1,5 @@
-from models.models import db, Team
+from core.models.models import Team
+from core import database as db
 
 class TeamService:
     @staticmethod

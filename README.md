@@ -45,3 +45,7 @@ To run the Flask application, use the following command:
 
 ```bash
 python app.py
+
+Or
+
+flask run 

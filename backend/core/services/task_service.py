@@ -1,5 +1,6 @@
 
-from models.models import db, Task
+from core.models.models import Task
+from core import database as db
 
 class TaskService:
     @staticmethod
