@@ -6,6 +6,7 @@ from flask_marshmallow import Marshmallow
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 from apifairy import APIFairy
+from flask_cors import CORS
 
 
 load_dotenv()
@@ -20,6 +21,7 @@ apifairy = APIFairy()
 
 def create_app(config_type=os.getenv("CONFIG_TYPE")):
     app = Flask(__name__)
+    CORS(app, resources={r"/api/*": {"origins": "http://localhost:4200"}})
 
     app.config.from_object(config_type)
 

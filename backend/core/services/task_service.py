@@ -5,7 +5,9 @@ from core import database as db
 class TaskService:
     @staticmethod
     def create_task(title, description, team_id):
+        print('dsssssssss')
         new_task = Task(title=title, description=description, team_id=team_id)
+        print(new_task)
         db.session.add(new_task)
         db.session.commit()
         return new_task
