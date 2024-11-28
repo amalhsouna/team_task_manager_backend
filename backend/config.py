@@ -9,6 +9,7 @@ class Config:
     SECRET_KEY = os.getenv("SECRET_KEY")
     FLASK_ENV = os.getenv("FLASK_ENV")
     DEBUG = os.getenv("DEBUG")
+    JWT_SECRET_KEY = os.getenv("JWT_SECRET_KEY", "your_default_jwt_secret_key") 
 
 class DevelopmentConfig(Config):
     DEBUG = True

@@ -7,7 +7,7 @@ from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 from apifairy import APIFairy
 from flask_cors import CORS
-
+from flask_jwt_extended import JWTManager
 
 load_dotenv()
 
@@ -28,6 +28,7 @@ def create_app(config_type=os.getenv("CONFIG_TYPE")):
     initialize_extensions(app)
 
     register_blueprint(app)
+    jwt = JWTManager(app)
 
     return app
 
@@ -41,10 +42,13 @@ def initialize_extensions(app):
     apifairy.init_app(app)
 
     import core.models.models
+    import core.models.user
 
 def register_blueprint(app):
     from core.api import teams_api_blueprint
     from core.api import tasks_api_blueprint
+    from core.api import login_api_blueprint
 
     app.register_blueprint(teams_api_blueprint, url_prefix="/api")
     app.register_blueprint(tasks_api_blueprint, url_prefix="/api")
+    app.register_blueprint(login_api_blueprint, url_prefix="/api")

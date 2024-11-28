@@ -8,4 +8,4 @@ class TeamSchema(ma.SQLAlchemySchema):
     tasks = ma.Nested(TaskSchema, many=True)
 
 class CreateTeamSchema(Schema):
-    name = fields.String(required=True, description="Nom de l'équipe")
+    name = fields.String(required=True, description="Name of team")

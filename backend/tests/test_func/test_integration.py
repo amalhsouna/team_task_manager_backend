@@ -1,6 +1,6 @@
 from flask_testing import TestCase
 from app import create_app, db
-from models.models import Task
+from core.models.models import Task
 
 class TestTaskIntegration(TestCase):
     def create_app(self):
