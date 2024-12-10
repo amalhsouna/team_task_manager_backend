@@ -1,11 +1,16 @@
 from werkzeug.security import check_password_hash
-from core.models.user import User  # Supposons que vous avez un modèle User avec SQLAlchemy
+from core.models.user import (
+    User,
+)  # Supposons que vous avez un modèle User avec SQLAlchemy
+
 
 class UserService:
     @staticmethod
     def authenticate_user(username, password):
         user = User.query.filter_by(username=username).first()
-        if user and check_password_hash(user.password, password):  # Vérifie le mot de passe
+        if user and check_password_hash(
+            user.password, password
+        ):  # Vérifie le mot de passe
             return user
         return None
 

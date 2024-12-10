@@ -27,7 +27,11 @@ class DevelopmentConfig(Config):
     APIFAIRY_UI = "swagger_ui"
     APIFAIRY_VERSION = "1.0"
     
-class TestingConfig:
-    TESTING = True
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///:memory:'  # Base de données en mémoire pour les tests
-    SQLALCHEMY_TRACK_MODIFICATIONS = False
+class TestingConfig(Config):
+    url_object = URL.create(
+        "postgresql+psycopg2",
+        username=os.getenv("DB_USERNAME"),
+        password=os.getenv("DB_PASSWORD"),
+        host=os.getenv("DB_HOST"),
+        database=os.getenv("DB_NAME"),
+    )

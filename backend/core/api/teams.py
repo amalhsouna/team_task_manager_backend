@@ -5,13 +5,15 @@ from apifairy import response, body
 
 from . import teams_api_blueprint
 
-team_schema = TeamSchema(many=True) # for a list of teams
-single_team_schema = TeamSchema()   # for a tema by id
+team_schema = TeamSchema(many=True)  # for a list of teams
+single_team_schema = TeamSchema()  # for a tema by id
+
 
 @teams_api_blueprint.route("/teams", methods=["GET"])
 @response(team_schema)
 def team():
     return TeamService.get_all_teams()
+
 
 @teams_api_blueprint.route("/teams", methods=["POST"])
 @body(CreateTeamSchema)
@@ -22,6 +24,7 @@ def create_team(data):
         return new_team
     except Exception as e:
         abort(400, description=f"Erreur lors de la création de l'équipe : {str(e)}")
+
 
 @teams_api_blueprint.route("/teams/<int:id>", methods=["GET"])
 @response(single_team_schema)

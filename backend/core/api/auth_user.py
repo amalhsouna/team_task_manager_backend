@@ -7,7 +7,8 @@ from . import login_api_blueprint
 
 login_schema = CreateAuthUserSchema()
 
-@login_api_blueprint.route('/login', methods=['POST'])
+
+@login_api_blueprint.route("/login", methods=["POST"])
 @body(login_schema)
 @response({"access_token": "string"})
 def login(data):
@@ -17,7 +18,9 @@ def login(data):
     # Simuler l'authentification (remplacez cela par votre logique réelle)
     user = UserService.authenticate_user(username, password)
     if user:
-        access_token = create_access_token(identity={"id": user.id, "username": user.username})
+        access_token = create_access_token(
+            identity={"id": user.id, "username": user.username}
+        )
         return {"access_token": access_token}
     else:
         abort(401, description="Invalid credentials")

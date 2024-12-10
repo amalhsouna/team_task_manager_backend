@@ -9,7 +9,11 @@ from apifairy import APIFairy
 from flask_cors import CORS
 from flask_jwt_extended import JWTManager
 
-load_dotenv()
+if os.getenv("FLASK_ENV") == "testing":
+    print("ddddddddddd")
+    load_dotenv(dotenv_path=".env_test")
+else:
+    load_dotenv()
 
 database = SQLAlchemy()
 
@@ -18,6 +22,9 @@ db_migration = Migrate()
 ma = Marshmallow()
 
 apifairy = APIFairy()
+
+print(os.getenv("CONFIG_TYPE"))
+
 
 def create_app(config_type=os.getenv("CONFIG_TYPE")):
     app = Flask(__name__)
@@ -32,6 +39,7 @@ def create_app(config_type=os.getenv("CONFIG_TYPE")):
 
     return app
 
+
 def initialize_extensions(app):
     database.init_app(app)
 
@@ -43,6 +51,7 @@ def initialize_extensions(app):
 
     import core.models.models
     import core.models.user
+
 
 def register_blueprint(app):
     from core.api import teams_api_blueprint

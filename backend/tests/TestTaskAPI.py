@@ -1,4 +1,5 @@
 import json
+from tests import BaseTestCase
 
 class TestTaskAPI(BaseTestCase):
     def test_create_task(self):

@@ -2,9 +2,9 @@ import unittest
 from flask_testing import TestCase
 from core import create_app, database as db
 from core.services.team_service import TeamService
-from core.models.models import Team
+from core.models.models import Task
 
-class TestManageTeams(TestCase):
+class TestManageTasks(TestCase):
 
     def create_app(self):
         """
@@ -21,15 +21,15 @@ class TestManageTeams(TestCase):
         self.client = self.app.test_client()
 
         # Add an object to the database
-        team = Team(name="Initial Team", created_at="2024/12/01")
-        db.session.add(team)
+        task = Task(title="Initial Task", desciption="descrition of task")
+        db.session.add(task)
         db.session.commit()
 
     def tearDown(self):
         """
         Cleans up specific test objects to avoid corrupting the existing database.
         """
-        teams = Team.query.filter(Team.name.in_(["Initial Task", "Team A", "Team B"])).all()
+        teams = Task.query.filter(Task.title.in_(["Initial Task", "Team A", "Team B"])).all()
         for team in teams:
             db.session.delete(team)
         db.session.commit()
@@ -38,7 +38,7 @@ class TestManageTeams(TestCase):
         """
         Tests the creation of a new team via POST.
         """
-        response = self.client.post('/api/teams', json={'name': 'Team A'})
+        response = self.client.post('/api/teams/1/tasks', json={'title': 'title f task'})
         self.assertEqual(response.status_code, 200)
         self.assertIn('id', response.json)
         self.assertEqual(response.json['name'], 'Team A')

@@ -1,6 +1,7 @@
 from core.models.models import Team
 from core import database as db
 
+
 class TeamService:
     @staticmethod
     def create_team(name):
